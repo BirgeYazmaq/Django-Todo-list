@@ -14,7 +14,7 @@
 
   <script>
     async function login(event) {
-      event.preventDefault(); // prevent form from reloading page
+      event.preventDefault();
 
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
@@ -32,12 +32,11 @@
         }
 
         const data = await response.json();
-        // Save tokens in localStorage (or cookies if you prefer)
         localStorage.setItem('access_token', data.access);
         localStorage.setItem('refresh_token', data.refresh);
 
         alert('Login successful! Access token saved.');
-        // Optionally redirect to protected page or show logged-in UI here
+        window.location.href = '/';  // Redirect to home/tasks
       } catch (error) {
         alert('Network error: ' + error.message);
       }
